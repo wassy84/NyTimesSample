@@ -47,6 +47,8 @@ public class ArticlePresenterTest {
     ArticlePresenter mPresenter;
 
     List<Result> mResultList;
+    List<Result> mResultEmptyList;
+    Response mEmptyResponse;
     Response mResponse;
 
     @Before
@@ -73,9 +75,16 @@ public class ArticlePresenterTest {
         mResponse.setNumResults(2);
         mResponse.setStatus("OK");
         mResponse.setResults(mResultList);
+
+        mResultEmptyList =new ArrayList<>();
+        mEmptyResponse = new Response();
+        mEmptyResponse.setNumResults(0);
+        mEmptyResponse.setResults(mResultEmptyList);
         mSchedulerProvider = new ImmediateSchedulerProvider();
         mPresenter = new ArticlePresenter(mDataSource, mSchedulerProvider, mInterCheck, mPreferenceData);
         mPresenter.attachView(mView);
+
+
 
 
     }
@@ -94,14 +103,27 @@ public class ArticlePresenterTest {
     }
 
     @Test
+    public void fetchDataWithZeroValues() {
+        when(mDataSource.getArticlesRx("all-section","1")).thenReturn(rx.Observable.just(mEmptyResponse));
+        when(mInterCheck.isOnline()).thenReturn(true);
+        when(mPreferenceData.getCurrentPeriod()).thenReturn("1");
+        when(mPreferenceData.getCurrentSection()).thenReturn("all-section");
+        mPresenter.fetchData(true);
+        InOrder inOrder = Mockito.inOrder(mView);
+        inOrder.verify(mView).errorWhileFetching("Sorry! No Stories avaliable for this topic");
+        verify(mView, never()).showData(anyList());
+
+    }
+
+    @Test
     public void fetchError() {
-        when(mDataSource.getArticlesRx("all-section","1")).thenReturn(Observable.error(new Throwable("An error has occurred!")));
+        when(mDataSource.getArticlesRx("all-section","1")).thenReturn(Observable.error(new Throwable("Sorry! Something went Wrong")));
         when(mInterCheck.isOnline()).thenReturn(true);
         when(mPreferenceData.getCurrentPeriod()).thenReturn("1");
         when(mPreferenceData.getCurrentSection()).thenReturn("all-section");
         mPresenter.fetchData( true);
         InOrder inOrder = Mockito.inOrder(mView);
-        inOrder.verify(mView).errorWhileFetching("An error has occurred!");
+        inOrder.verify(mView).errorWhileFetching("Sorry! Something went Wrong");
         verify(mView, never()).showData(anyList());
     }
 

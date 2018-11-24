@@ -60,7 +60,6 @@ public class ArticlesFragment extends Fragment implements ArticlesContract.ViewO
     public ArticlePresenter mArticlesPresenter;
 
 
-
     @Override
     public void onAttach(Context context) {
         ((NyTimesApplication)context.getApplicationContext()).getAppComponent().inject(this);
@@ -84,8 +83,6 @@ public class ArticlesFragment extends Fragment implements ArticlesContract.ViewO
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-       /* if(mArticlesPresenter == null)
-            mArticlesPresenter = new ArticlePresenter(mDataSource, mSchedulerProvider, mInternet, mPref);*/
         mArticlesPresenter.attachView(this);
         mArticlesPresenter.fetchData( false);
         pullToRefresh();
@@ -161,6 +158,8 @@ public class ArticlesFragment extends Fragment implements ArticlesContract.ViewO
 
     @Override
     public void showDataProgressFetching() {
+        mErrorTextView.setVisibility(View.GONE);
+        mErrorLay.setVisibility(View.GONE);
         progressBar.setVisibility(View.VISIBLE);
     }
 
@@ -200,7 +199,6 @@ public class ArticlesFragment extends Fragment implements ArticlesContract.ViewO
         if (id == R.id.op_settings) {
             mArticlesPresenter.launchNewActivity();
         }
-
         return super.onOptionsItemSelected(item);
     }
 

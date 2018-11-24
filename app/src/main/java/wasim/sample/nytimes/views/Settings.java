@@ -39,7 +39,6 @@ public class Settings extends AppCompatActivity implements SettingsContract.View
         setContentView(R.layout.settings_layout);
         ((NyTimesApplication)getApplicationContext()).getAppComponent().inject(this);
         initView();
-        //mSetPresenter = new SettingsPresenter(mPrefmanager);
         mSetPresenter.attachView(this);
         mSetPresenter.fetchIntialValue();
     }
