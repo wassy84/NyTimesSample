@@ -1,0 +1,82 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "wasim.sample.nytimes"
+        minSdkVersion 19
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+
+}
+
+def supportLibVer = '27.1.1'
+def constraint = '1.0.2'
+def daggerVer = '2.10'
+def retrofitVer = '2.1.0'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //Support Libraries and UI
+    implementation "com.android.support.constraint:constraint-layout:$constraint"
+    implementation "com.android.support:appcompat-v7:$supportLibVer"
+    implementation "com.android.support:support-v4:$supportLibVer"
+    implementation "com.android.support:design:$supportLibVer"
+    implementation "com.android.support:cardview-v7:$supportLibVer"
+    implementation "com.android.support:recyclerview-v7:$supportLibVer"
+    implementation 'com.github.bumptech.glide:glide:3.8.0'
+
+    // Rx java
+    implementation 'io.reactivex:rxjava:1.1.8'
+    implementation 'io.reactivex:rxandroid:1.2.1'
+
+
+    // Networking
+    implementation "com.squareup.okhttp3:okhttp:3.8.0"
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.8.0'
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVer"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVer"
+    implementation "com.squareup.retrofit2:adapter-rxjava:$retrofitVer"
+
+    //Dependency Injection
+    implementation "com.google.dagger:dagger:$daggerVer"
+    implementation "com.google.dagger:dagger-android:$daggerVer"
+    annotationProcessor "com.google.dagger:dagger-android-processor:$daggerVer"
+    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVer"
+
+    //Testing
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test:rules:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    testImplementation 'org.robolectric:robolectric:3.8'
+    implementation "com.squareup.okhttp3:mockwebserver:3.8.0"
+    testImplementation('org.robolectric:shadows-support-v4:3.3') {
+        exclude module: 'support-v4'
+    }
+    // Mockito
+    implementation "org.mockito:mockito-core:1.10.19"
+    // AssertJ
+    implementation "org.assertj:assertj-core:2.7.0"
+
+
+    implementation 'org.jetbrains:annotations:15.0'
+}

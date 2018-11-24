@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="?attr/listPreferredItemHeight"
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
+            android:weightSum="10">
+            <TextView
+                android:id="@+id/hdr_days"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="Select Days"
+                android:textColor="?attr/colorAccent"
+                android:textSize="15dp"
+                android:layout_weight="4"/>
+            <TextView
+                android:id="@+id/txt_days"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:layout_weight="5"/>
+            <ImageButton
+                android:id="@+id/btn_days"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_more_options"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:layout_weight="1"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="?attr/listPreferredItemHeight"
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
+            android:gravity="center_vertical"
+            android:weightSum="10">
+            <TextView
+                android:id="@+id/hdr_sections"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Select Section"
+                android:textStyle="bold"
+                android:textColor="?attr/colorAccent"
+                android:textSize="15dp"
+                android:layout_weight="4"/>
+            <TextView
+                android:id="@+id/txt_sections"
+                android:layout_width="0dp"
+                android:textSize="14dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"/>
+            <ImageButton
+                android:id="@+id/btn_sections"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_more_options"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:layout_weight="1"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

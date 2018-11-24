@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="days">
+        <item>1</item>
+        <item>7</item>
+        <item>30</item>
+    </string-array>
+    <string-array name="sections">
+        <item>all-sections</item>
+        <item>Arts</item>
+        <item>Automobiles</item>
+        <item>Blogs</item>
+        <item>Books</item>
+        <item>Business Day</item>
+        <item>Education</item>
+        <item>Fashion &amp; Style</item>
+        <item>Food</item>
+        <item>Health</item>
+        <item>Job Market</item>
+        <item>Magazine</item>
+        <item>membercenter</item>
+        <item>Movies</item>
+        <item>Multimedia</item>
+        <item>NYF Region</item>
+        <item>NYT Now</item>
+        <item>Obituaries</item>
+        <item>Open</item>
+        <item>Opinion</item>
+        <item>Public Editor</item>
+        <item>Real Estate</item>
+        <item>Science</item>
+        <item>Sports</item>
+        <item>Style</item>
+        <item>Sunday Review</item>
+        <item>T Magazine</item>
+        <item>Technology</item>
+        <item>The Upshot</item>
+        <item>Theater</item>
+        <item>Times Insider</item>
+        <item>Today\’s Paper</item>
+        <item>Travel</item>
+        <item>U.S.</item>
+        <item>World</item>
+        <item>Your Money</item>
+    </string-array>
+</resources>
