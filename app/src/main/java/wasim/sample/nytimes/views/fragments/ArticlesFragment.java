@@ -176,7 +176,7 @@ public class ArticlesFragment extends Fragment implements ArticlesContract.ViewO
     @Override
     public void isInternetConnected(boolean val) {
         if(!val) {
-            Snackbar snackbar1 = Snackbar.make(getView(), "Sorry, You have not an active internet connection!", Snackbar.LENGTH_SHORT);
+            Snackbar snackbar1 = Snackbar.make(getView(), "Sorry, You dont have an active internet connection!", Snackbar.LENGTH_SHORT);
             snackbar1.show();
         }
     }
