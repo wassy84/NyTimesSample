@@ -1,6 +1,5 @@
 package wasim.sample.nytimes.presenters;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InOrder;

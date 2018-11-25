@@ -1,7 +1,5 @@
 package wasim.sample.nytimes.presenters;
 
-import android.test.mock.MockContext;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InOrder;
@@ -9,12 +7,9 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import java.lang.ref.WeakReference;
-
 import wasim.sample.nytimes.models.pref.PreferenceDataManager;
 import wasim.sample.nytimes.presenters.settings.SettingsContract;
 import wasim.sample.nytimes.presenters.settings.SettingsPresenter;
-import wasim.sample.nytimes.views.Settings;
 
 import static org.mockito.Mockito.when;
 

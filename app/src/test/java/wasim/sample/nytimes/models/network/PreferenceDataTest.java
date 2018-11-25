@@ -3,18 +3,15 @@ package wasim.sample.nytimes.models.network;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.test.mock.MockContext;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import wasim.sample.nytimes.models.pref.PreferenceDataManager;
-import wasim.sample.nytimes.utils.Constants;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
@@ -29,8 +26,7 @@ public class PreferenceDataTest {
     public void setUp(){
         MockitoAnnotations.initMocks(this);
         mContext = Mockito.mock(Context.class);
-        preferenceDataManager = new PreferenceDataManager(mContext, "myPrefs");
-        preferenceDataManager.mPrefs =  Mockito.mock(SharedPreferences.class);
+        preferenceDataManager = new PreferenceDataManager( Mockito.mock(SharedPreferences.class));
     }
 
     @Test

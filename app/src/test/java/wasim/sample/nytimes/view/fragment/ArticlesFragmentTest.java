@@ -1,41 +1,23 @@
 package wasim.sample.nytimes.view.fragment;
 
-import android.view.View;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.robolectric.RobolectricTestRunner;
+import org.robolectric.RuntimeEnvironment;
+import org.robolectric.shadows.support.v4.SupportFragmentTestUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import wasim.sample.nytimes.BuildConfig;
 import wasim.sample.nytimes.R;
-import wasim.sample.nytimes.models.network.DataSource;
-import wasim.sample.nytimes.models.pojo.Response;
 import wasim.sample.nytimes.models.pojo.Result;
-import wasim.sample.nytimes.utils.InternetCheck;
-import wasim.sample.nytimes.utils.schedulers.BaseSchedulerProvider;
-import wasim.sample.nytimes.views.adapters.ArticlesAdapter;
 import wasim.sample.nytimes.views.fragments.ArticlesFragment;
 
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-import org.robolectric.Robolectric;
-import org.robolectric.RobolectricTestRunner;
-import org.robolectric.RuntimeEnvironment;
-import org.robolectric.annotation.Config;
-import org.robolectric.shadows.support.v4.SupportFragmentTestUtil;
-
-import javax.inject.Inject;
-
-import static java.util.Arrays.asList;
 import static org.assertj.core.api.Java6Assertions.assertThat;
-import static org.mockito.Mockito.when;
 
 
 @RunWith(RobolectricTestRunner.class)
-@Config(constants = BuildConfig.class, sdk = 27)
 public class ArticlesFragmentTest {
 
     private ArticlesFragment mFragment;
@@ -47,6 +29,7 @@ public class ArticlesFragmentTest {
         RuntimeEnvironment.application.getPackageName();
         RuntimeEnvironment.application.setTheme(R.style.AppTheme);
         mFragment = new ArticlesFragment();
+        //mFragment = Robolectric.buildFragment(ArticlesFragment.class).create().get()
     }
 
     @Test

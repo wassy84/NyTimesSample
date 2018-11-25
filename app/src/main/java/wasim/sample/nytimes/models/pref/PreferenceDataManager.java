@@ -1,6 +1,5 @@
 package wasim.sample.nytimes.models.pref;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 
 import javax.inject.Inject;
@@ -13,8 +12,8 @@ public class PreferenceDataManager implements PreferenceInterface {
 
 
     @Inject
-    public PreferenceDataManager(Context context, String prefFileName) {
-        mPrefs = context.getSharedPreferences(prefFileName, Context.MODE_PRIVATE);
+    public PreferenceDataManager(SharedPreferences mpref) {
+        mPrefs = mpref;
     }
 
 

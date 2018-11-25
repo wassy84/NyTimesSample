@@ -1,7 +1,6 @@
 package wasim.sample.nytimes.models.network;
 
 
-import retrofit2.Retrofit;
 import rx.Observable;
 import wasim.sample.nytimes.models.pojo.Response;
 
@@ -9,8 +8,8 @@ public class DataSource implements ApiInterface{
 
     private ApiInterface mApiInterface;
 
-    public DataSource(Retrofit rf){
-        mApiInterface = rf.create(ApiInterface.class);
+    public DataSource(ApiInterface rf){
+        mApiInterface = rf;
     }
 
     @Override

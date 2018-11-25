@@ -5,21 +5,23 @@ import android.content.Context;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
+
 import javax.inject.Singleton;
+
 import dagger.Module;
 import dagger.Provides;
 import okhttp3.Cache;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
-import okhttp3.logging.HttpLoggingInterceptor;
 import okhttp3.Request;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import wasim.sample.nytimes.NyTimesApplication;
+import wasim.sample.nytimes.models.network.ApiInterface;
 import wasim.sample.nytimes.models.network.DataSource;
 import wasim.sample.nytimes.models.pref.PreferenceDataManager;
-import wasim.sample.nytimes.presenters.articles.ArticlePresenter;
 import wasim.sample.nytimes.presenters.settings.SettingsPresenter;
 import wasim.sample.nytimes.utils.Constants;
 import wasim.sample.nytimes.utils.InternetCheck;
@@ -52,12 +54,14 @@ public class AppModules {
     @Singleton
     @Provides
     DataSource provideRemoteDataSource(OkHttpClient okHttpClient) {
-        return new DataSource( new Retrofit.Builder()
+        Retrofit retrofitObj = new Retrofit.Builder()
                 .baseUrl(Constants.URL_BASE)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .client(okHttpClient)
-                .build());
+                .build();
+        return new DataSource(retrofitObj.create(ApiInterface.class));
+
     }
     @Singleton
     @Provides
@@ -118,7 +122,7 @@ public class AppModules {
 
     @Provides
     PreferenceDataManager providePreferenceDataManager( Context Ctx){
-        return new PreferenceDataManager(Ctx,"sample_pref");
+        return new PreferenceDataManager(Ctx.getSharedPreferences("sample_pref", Context.MODE_PRIVATE));
     }
 
     @Provides
@@ -126,10 +130,6 @@ public class AppModules {
         return new SettingsPresenter(pref);
     }
 
-    @Provides
-    ArticlePresenter provideArticlePresenterArticlePresenter(DataSource src, BaseSchedulerProvider prvd, InternetCheck internet, PreferenceDataManager pref){
-        return new ArticlePresenter(src, prvd, internet, pref);
-    }
 
 
 }

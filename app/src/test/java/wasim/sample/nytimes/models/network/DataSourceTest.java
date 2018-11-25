@@ -7,22 +7,17 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
-import org.robolectric.RuntimeEnvironment;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import dagger.Component;
-import dagger.Module;
-import dagger.Provides;
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import rx.observers.TestSubscriber;
-import wasim.sample.nytimes.di.AppComponent;
 import wasim.sample.nytimes.models.pojo.Response;
 import wasim.sample.nytimes.models.pojo.Result;
 
@@ -76,8 +71,8 @@ public class DataSourceTest {
                 .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl(mMockWebServer.url(url))
                 .build();
-        DataSource remoteDataSource = new DataSource(retrofit);
 
+        DataSource remoteDataSource = new DataSource(retrofit.create(ApiInterface.class));
         //When
         remoteDataSource.getArticlesRx("all-sections","7").subscribe(mSubscriber);
 
@@ -97,7 +92,7 @@ public class DataSourceTest {
                 .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl(mMockWebServer.url(url))
                 .build();
-        DataSource remoteDataSource = new DataSource(retrofit);
+        DataSource remoteDataSource = new DataSource(retrofit.create(ApiInterface.class));
 
         //When
         remoteDataSource.getArticlesRx("all-sections","7").subscribe(mSubscriber);

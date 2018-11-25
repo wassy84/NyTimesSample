@@ -1,6 +1,6 @@
 package wasim.sample.nytimes.view.adapter;
+
 import android.content.Context;
-import android.os.Build;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,16 +11,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
-import org.robolectric.annotation.Config;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import wasim.sample.nytimes.BuildConfig;
 import wasim.sample.nytimes.R;
 import wasim.sample.nytimes.models.pojo.MediaMetadatum;
 import wasim.sample.nytimes.models.pojo.Medium;
-import wasim.sample.nytimes.models.pojo.Response;
 import wasim.sample.nytimes.models.pojo.Result;
 import wasim.sample.nytimes.views.adapters.ArticlesAdapter;
 import wasim.sample.nytimes.views.viewholder.ArticlesViewHolder;
@@ -31,7 +28,6 @@ import static org.assertj.core.api.Java6Assertions.assertThat;
 
 
 @RunWith(RobolectricTestRunner.class)
-@Config(constants = BuildConfig.class, sdk = 27)
 public class TestArticlesAdapter  {
 
     private ArticlesAdapter adapter = null;

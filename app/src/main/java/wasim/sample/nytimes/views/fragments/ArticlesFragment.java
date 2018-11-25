@@ -27,10 +27,13 @@ import javax.inject.Inject;
 
 import wasim.sample.nytimes.NyTimesApplication;
 import wasim.sample.nytimes.R;
+import wasim.sample.nytimes.models.network.DataSource;
 import wasim.sample.nytimes.models.pojo.Result;
 import wasim.sample.nytimes.models.pref.PreferenceDataManager;
 import wasim.sample.nytimes.presenters.articles.ArticlePresenter;
 import wasim.sample.nytimes.presenters.articles.ArticlesContract;
+import wasim.sample.nytimes.utils.InternetCheck;
+import wasim.sample.nytimes.utils.schedulers.BaseSchedulerProvider;
 import wasim.sample.nytimes.views.Settings;
 import wasim.sample.nytimes.views.adapters.ArticlesAdapter;
 
@@ -41,7 +44,7 @@ public class ArticlesFragment extends Fragment implements ArticlesContract.ViewO
     public TextView mErrorTextView;
     private SwipeRefreshLayout mSwipeRefresh;
     private LinearLayout mErrorLay;
-
+    public ArticlePresenter mArticlesPresenter;
 
     @Inject
     public ArticlesAdapter mArticleRecycleViewAdapter;
@@ -50,8 +53,16 @@ public class ArticlesFragment extends Fragment implements ArticlesContract.ViewO
     public PreferenceDataManager mPref;
 
     @Inject
-    public ArticlePresenter mArticlesPresenter;
+    DataSource dataSource;
 
+    @Inject
+    BaseSchedulerProvider prvd;
+
+    @Inject
+    InternetCheck internet;
+
+    @Inject
+    PreferenceDataManager pref;
 
     @Override
     public void onAttach(Context context) {
@@ -76,6 +87,9 @@ public class ArticlesFragment extends Fragment implements ArticlesContract.ViewO
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        if(mArticlesPresenter == null){
+           mArticlesPresenter =  new ArticlePresenter(dataSource, prvd, internet, pref);
+        }
         mArticlesPresenter.attachView(this);
         mArticlesPresenter.fetchData( false);
         pullToRefresh();

@@ -23,7 +23,5 @@ public class ArticlesViewHolder extends RecyclerView.ViewHolder {
         img_article_icon = (ImageView)v.findViewById(R.id.img_article_icon);
         date = (TextView)v.findViewById(R.id.date);
         byLine = (TextView)v.findViewById(R.id.byLine);
-
-
     }
 }

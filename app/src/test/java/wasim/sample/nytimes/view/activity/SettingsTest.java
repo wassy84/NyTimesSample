@@ -7,10 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
-import org.robolectric.android.controller.ActivityController;
-import org.robolectric.annotation.Config;
 
-import wasim.sample.nytimes.BuildConfig;
 import wasim.sample.nytimes.R;
 import wasim.sample.nytimes.views.Settings;
 
@@ -19,15 +16,16 @@ import static junit.framework.Assert.assertTrue;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
 @RunWith(RobolectricTestRunner.class)
-@Config(constants = BuildConfig.class, sdk = 27)
 public class SettingsTest {
 
     private Settings activity;
-    private ActivityController<Settings> controller;
 
     @Before
     public void setUp() {
-        activity = Robolectric.setupActivity(Settings.class);
+        activity = Robolectric.buildActivity( Settings.class )
+                .create()
+                .resume()
+                .get();
     }
 
     @Test

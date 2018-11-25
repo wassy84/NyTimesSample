@@ -3,6 +3,8 @@ package wasim.sample.nytimes.presenters.articles;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import rx.Subscriber;
 import rx.Subscription;
 import rx.subscriptions.CompositeSubscription;
@@ -16,21 +18,13 @@ import wasim.sample.nytimes.utils.schedulers.BaseSchedulerProvider;
 public class ArticlePresenter implements ArticlesContract.Presenter{
 
     private WeakReference<ArticlesContract.ViewOps> mView;
-
     private BaseSchedulerProvider mSchedulerProvider;
-
     private CompositeSubscription mSubscriptions;
-
     private DataSource mDataSource;
-
     private InternetCheck mInternet;
-
     private List<Result> mResults;
-
     private PreferenceDataManager mPrefernceManager;
-
     private String mSectionSel, mLimiter;
-
 
     public ArticlePresenter(DataSource src, BaseSchedulerProvider prvd, InternetCheck internet, PreferenceDataManager pref){
         mDataSource = src;
