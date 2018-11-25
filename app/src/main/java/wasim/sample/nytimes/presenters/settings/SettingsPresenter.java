@@ -2,8 +2,6 @@ package wasim.sample.nytimes.presenters.settings;
 
 import java.lang.ref.WeakReference;
 
-import javax.inject.Inject;
-
 import wasim.sample.nytimes.models.pref.PreferenceDataManager;
 
 

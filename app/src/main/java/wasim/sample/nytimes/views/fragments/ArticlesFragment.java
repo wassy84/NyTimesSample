@@ -27,13 +27,10 @@ import javax.inject.Inject;
 
 import wasim.sample.nytimes.NyTimesApplication;
 import wasim.sample.nytimes.R;
-import wasim.sample.nytimes.models.network.DataSource;
 import wasim.sample.nytimes.models.pojo.Result;
 import wasim.sample.nytimes.models.pref.PreferenceDataManager;
 import wasim.sample.nytimes.presenters.articles.ArticlePresenter;
 import wasim.sample.nytimes.presenters.articles.ArticlesContract;
-import wasim.sample.nytimes.utils.InternetCheck;
-import wasim.sample.nytimes.utils.schedulers.BaseSchedulerProvider;
 import wasim.sample.nytimes.views.Settings;
 import wasim.sample.nytimes.views.adapters.ArticlesAdapter;
 
@@ -45,14 +42,10 @@ public class ArticlesFragment extends Fragment implements ArticlesContract.ViewO
     private SwipeRefreshLayout mSwipeRefresh;
     private LinearLayout mErrorLay;
 
-    @Inject
-    DataSource mDataSource;
-    @Inject
-    public BaseSchedulerProvider mSchedulerProvider;
+
     @Inject
     public ArticlesAdapter mArticleRecycleViewAdapter;
-    @Inject
-    public InternetCheck mInternet;
+
     @Inject
     public PreferenceDataManager mPref;
 

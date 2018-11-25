@@ -1,34 +1,28 @@
 package wasim.sample.nytimes.views;
 
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.Window;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
-import java.util.List;
 
 import javax.inject.Inject;
 
 import wasim.sample.nytimes.NyTimesApplication;
 import wasim.sample.nytimes.R;
-import wasim.sample.nytimes.models.pref.PreferenceDataManager;
 import wasim.sample.nytimes.presenters.settings.SettingsContract;
 import wasim.sample.nytimes.presenters.settings.SettingsPresenter;
 
 public class Settings extends AppCompatActivity implements SettingsContract.ViewOps{
 
 
-    @Inject
-    PreferenceDataManager mPrefmanager;
+
     @Inject
     SettingsPresenter mSetPresenter;
+
     public ImageButton mDays, mSections;
     public TextView mDaysTxt, mSectionsTxt;
 

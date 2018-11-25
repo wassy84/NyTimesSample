@@ -1,6 +1,7 @@
 package wasim.sample.nytimes.utils.schedulers;
 
 import android.support.annotation.NonNull;
+
 import rx.Scheduler;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;

@@ -57,7 +57,8 @@ public class AppModules {
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .client(okHttpClient)
-                .build());}
+                .build());
+    }
     @Singleton
     @Provides
     OkHttpClient provideOkhttpClient(Interceptor newInceptor, Cache cache) {

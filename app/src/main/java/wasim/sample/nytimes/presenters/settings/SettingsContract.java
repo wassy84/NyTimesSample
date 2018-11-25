@@ -1,7 +1,5 @@
 package wasim.sample.nytimes.presenters.settings;
 
-import java.util.List;
-
 import wasim.sample.nytimes.presenters.BaseContract;
 
 public interface SettingsContract extends BaseContract.Presenter {
